@@ -1,21 +1,22 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv').config();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 const app = express();
-//body parser를 이용해 body 추출가능
-app.use(express.json());
+
+//Enable body parser
+app.use(express.json()); //json 형태로 파싱한다.
 app.use(express.urlencoded({extended: false}));
-//ejs 엔진 설정
+
+//Set static folder
 app.set("view engine", "ejs");
-//public 폴더와 연결
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static("public/"));
 app.use('/openai', require('./routes/openaiRoutes'));
 
-//index.ejs 연결
 app.get(
-    "/", (req, res) => {
-        res.render("index.ejs")
-    }
+    "/", (req,res) =>
+    {res.render("index.ejs");}
 );
-app.listen(port, ()=> console.log(`server started`))
+app.listen(port, () => console.log(`Server Started on port`));

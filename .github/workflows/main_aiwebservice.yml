@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'AIWebService'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F0778A0CEB3B4D8196294E80C1754400 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AB624B6C989748399104B8942EF9FEEF }}
           package: .
